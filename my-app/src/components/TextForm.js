@@ -10,6 +10,33 @@ export default function TextForm(props) {
         let newText = text.toLowerCase()
         setText(newText)
     }
+    const handleCapitalizeClick = ()=>{
+        // let arr = text.split(/(?:\.\s)|(?:,\s)/)
+        let arr = text.split(/(?:\.\s+)/)
+        for (var i = 0; i < arr.length; i++) {
+            arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+        }
+        let newText = arr.join(". ")
+
+        arr = newText.split(/(?::\s+)/)
+        for (i = 0; i < arr.length; i++) {
+            arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+        }
+        newText = arr.join(": ")
+
+        arr = newText.split(/(?:\?\s+)/)
+        for (i = 0; i < arr.length; i++) {
+            arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+        }
+        newText = arr.join("? ")
+
+        arr = newText.split(/(?:!\s+)/)
+        for (i = 0; i < arr.length; i++) {
+            arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+        }
+        newText = arr.join("! ")
+        setText(newText)
+    }
     const handleOnChange = (event)=>{
         setText(event.target.value)
     }
@@ -24,6 +51,7 @@ export default function TextForm(props) {
             <textarea className="form-control" value={text} placeholder='Enter Text Here' onChange={handleOnChange} id="box" rows="8"></textarea>
             <button className="btn btn-outline-primary mx-1 my-2" onClick={handleUpClick}>Upper Case</button>
             <button className="btn btn-outline-primary mx-1 my-2" onClick={handleLowClick}>Lower Case</button>
+            <button className="btn btn-outline-primary mx-1 my-2" onClick={handleCapitalizeClick}>Capitalize</button>
         </div>
         <div className="container my-3 text-center">
             <h2>Your Text Summary</h2>
