@@ -1,29 +1,30 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-export default function About() {
-    const [myStyle, setmyStyle] = useState({
-        color: 'black',
-        backgroundColor: 'white'
-    })
-    const [btnText, setbtnText] = useState('Enable Dark Mode')
-    const toggleStyle = ()=>{
-        if (myStyle.color === 'black') {
-            setmyStyle({
-                color: 'white',
-                backgroundColor: 'black'
-            })
-            setbtnText('Enable Light Mode')
-        }
-        else{
-            setmyStyle({
-                color: 'black',
-                backgroundColor: 'white'
-            })
-            setbtnText('Enable Dark Mode')
-        }
-    }
+export default function About(props) {
+    // const [myStyle, setmyStyle] = useState({
+    //     color: 'black',
+    //     backgroundColor: 'white'
+    // })
+    // const [btnText, setbtnText] = useState('Enable Dark Mode')
+    // const toggleStyle = ()=>{
+    //     if (myStyle.color === 'black') {
+    //         setmyStyle({
+    //             color: 'white',
+    //             backgroundColor: 'black'
+    //         })
+    //         setbtnText('Enable Light Mode')
+    //     }
+    //     else{
+    //         setmyStyle({
+    //             color: 'black',
+    //             backgroundColor: 'white'
+    //         })
+    //         setbtnText('Enable Dark Mode')
+    //     }
+    // }
   return (
-    <div className='container' style={myStyle}>
+    // style={{backgroundColor: props.mode==='dark'?'#212529':'white', color: props.mode==='dark'?'white':'black'}}
+    <div className='container'>
         <h1>Abous Us</h1>
         <div className="accordion" id="accordionExample">
         <div className="accordion-item">
@@ -63,7 +64,7 @@ export default function About() {
             </div>
         </div>
         </div>
-        <button className="btn btn-outline-primary mx-1 my-2" onClick={toggleStyle}>{btnText}</button>
+        {/* <button className="btn btn-outline-primary mx-1 my-2" onClick={toggleStyle}>{btnText}</button> */}
     </div>
   )
 }
