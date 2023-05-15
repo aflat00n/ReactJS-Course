@@ -55,10 +55,10 @@ export default function TextForm(props) {
         </div>
         <div className="container my-3 text-center" style={{color: props.mode==='dark'?'white':'black'}}>
             <h2>Your Text Summary</h2>
-            <p>{text.split(' ').length} words | {text.length} characters</p>
+            <p>{text.length===0?0:text.split(/(?:\s[a-zA-Z0-9])/).length} words | {text.length} characters</p>
             <p>Approx. Reading Time: {Math.round(text.split(' ').length * 0.008)} minutes</p>
             <h2>Preview</h2>
-            <p>{text.length>0?text:'Enter Text to Preview'}</p>
+            <p>{text.length>0?text.split(/(?<=[a-zA-Z0-9]\s+)/):'Enter Text to Preview'}</p>
             {/* <p placeholder='Enter Text'>{text}</p> */}
         </div>
     </>
