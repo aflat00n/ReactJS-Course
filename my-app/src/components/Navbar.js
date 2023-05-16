@@ -1,7 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 export default function Navbar(props) {
+    // const newColor = ()=>{
+    //     let newColor = 'dark'
+    //     setColor(newColor)
+    // }
+    // const [color, setColor] = useState('light')
+    const [defaultClicked, setDefaultClicked] = useState('-')
+    const [primaryClicked, setPrimaryClicked] = useState('-outline-')
+    const [dangerClicked, setDangerClicked] = useState('-outline-')
+    const [successClicked, setSuccessClicked] = useState('-outline-')
+    const defaultClick = (event)=>{
+        setDefaultClicked('-')
+        setPrimaryClicked('-outline-')
+        setDangerClicked('-outline-')
+        setSuccessClicked('-outline-')
+    }
+    const primaryClick = (event)=>{
+        setDefaultClicked('-outline-')
+        setPrimaryClicked('-')
+        setDangerClicked('-outline-')
+        setSuccessClicked('-outline-')
+    }
+    const dangerClick = (event)=>{
+        setDefaultClicked('-outline-')
+        setPrimaryClicked('-outline-')
+        setDangerClicked('-')
+        setSuccessClicked('-outline-')
+    }
+    const successClick = (event)=>{
+        setDefaultClicked('-outline-')
+        setPrimaryClicked('-outline-')
+        setDangerClicked('-outline-')
+        setSuccessClicked('-')
+    }
+    // if (props.mode === 'light' && defaultClicked === '-' ) {
+        
+    // }
   return (
     <div>
         <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode} bg-gradient`}>
@@ -19,7 +55,11 @@ export default function Navbar(props) {
                 <a className="nav-link" href="/">{props.about}</a>
                 </li>
             </ul>
-            <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
+            <button type="button" onClick={defaultClick} className={`btn btn${defaultClicked}dark btn-sm me-2`}></button>
+            <button type="button" onClick={primaryClick} className={`btn btn${primaryClicked}primary btn-sm me-2`}></button>
+            <button type="button" onClick={dangerClick} className={`btn btn${dangerClicked}danger btn-sm me-2`}></button>
+            <button type="button" onClick={successClick} className={`btn btn${successClicked}success btn-sm me-2`}></button>
+            <div className={`form-check form-switch me-2 text-${props.mode==='light'?'dark':'light'}`}>
                 <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toggleMode}/>
                 <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Dark Mode</label>
             </div>
